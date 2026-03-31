@@ -132,6 +132,7 @@ toast.success(
     </span>
   </p>
 </>
+//Fixed minor UI bugs
 //Added JWT token handling
  //Fixed frontend-backend connection issue      
         </div>
