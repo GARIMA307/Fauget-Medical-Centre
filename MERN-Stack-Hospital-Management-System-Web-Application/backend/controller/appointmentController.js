@@ -1,4 +1,4 @@
-/*hi helllo */
+
 
 import { sendEmail } from "../utils/sendEmail.js";
 import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js";
