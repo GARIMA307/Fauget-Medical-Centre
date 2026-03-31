@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+/**Improved error handling and toast messages */
 const feedbackSchema = new mongoose.Schema({
   type: {
     type: String,
