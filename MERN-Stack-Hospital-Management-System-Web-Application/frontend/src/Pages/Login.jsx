@@ -132,7 +132,7 @@ toast.success(
     </span>
   </p>
 </>
-
+//Added loading indicators
 //Improved overall application performance
         </div>
       </div>
