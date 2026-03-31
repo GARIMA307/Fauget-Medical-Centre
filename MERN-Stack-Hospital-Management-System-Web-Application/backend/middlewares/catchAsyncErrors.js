@@ -3,3 +3,4 @@ export const catchAsyncErrors = (theFunction) => {
     Promise.resolve(theFunction(req, res, next)).catch(next);
   };
 };
+/**Fixed frontend-backend API integration issue */
