@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 
-// ✅ FULL DATA
+//Improved error handling and toast messages
 const hospitalDetails = {
   Delhi: [
     {
