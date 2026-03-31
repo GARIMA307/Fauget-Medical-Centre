@@ -132,6 +132,7 @@ toast.success(
     </span>
   </p>
 </>
+//Improved doctor UI cards
 //Improved responsive design
 //Enhanced button styles
 //Added loading indicators
