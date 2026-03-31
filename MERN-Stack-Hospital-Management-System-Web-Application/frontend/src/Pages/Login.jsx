@@ -132,7 +132,7 @@ toast.success(
     </span>
   </p>
 </>
-
+//Added JWT token handling
        
         </div>
       </div>
