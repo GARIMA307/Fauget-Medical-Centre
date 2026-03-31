@@ -124,7 +124,7 @@ else if (!/^\d{13}$/.test(form.nic))
 
         <input name="nic" value={form.nic} placeholder="NIC" onChange={handleChange}/>
         {errors.nic && <p className="error">{errors.nic}</p>}
-
+//Improved overall UI/UX design*/
         <input type="date" name="dob" value={form.dob} onChange={handleChange}/>
         {errors.dob && <p className="error">{errors.dob}</p>}
 
