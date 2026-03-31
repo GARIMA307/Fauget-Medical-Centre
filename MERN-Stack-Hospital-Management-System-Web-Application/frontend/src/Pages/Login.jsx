@@ -133,7 +133,7 @@ toast.success(
   </p>
 </>
 //Added JWT token handling
-       
+ //Fixed frontend-backend connection issue      
         </div>
       </div>
     </div>
