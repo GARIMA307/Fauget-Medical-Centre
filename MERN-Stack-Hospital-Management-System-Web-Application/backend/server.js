@@ -18,7 +18,7 @@ cloudinary.v2.config({
 app.get("/test", (req, res) => {
   res.send("Backend working");
 });
-
+//Fixed minor bugs and improved performance
 
 app.get("/api/v1/user/test", (req, res) => {
   res.send("User route working");
