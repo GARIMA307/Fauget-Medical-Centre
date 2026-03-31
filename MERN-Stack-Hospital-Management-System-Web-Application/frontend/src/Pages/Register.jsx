@@ -104,7 +104,7 @@ else if (!/^\d{13}$/.test(form.nic))
         >
           ×
         </button>
-
+//Fixed search dropdown issues
         <h2 className="title">Register</h2>
 
         <input name="firstName" value={form.firstName} placeholder="First Name" onChange={handleChange}/>
