@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+//Added validation for feedback form
 const HospitalList = () => {
   const [hospitals, setHospitals] = useState([]);
   const navigate = useNavigate();
