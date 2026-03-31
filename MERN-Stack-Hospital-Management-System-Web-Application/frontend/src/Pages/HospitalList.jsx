@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const HospitalList = () => {
   const [hospitals, setHospitals] = useState([]);
   const navigate = useNavigate();
-
+///Improved notification messages
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/hospitals/Delhi") // you can change state
       .then((res) => res.json())
