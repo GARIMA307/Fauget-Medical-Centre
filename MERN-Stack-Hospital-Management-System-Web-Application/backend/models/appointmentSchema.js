@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { Mongoose } from "mongoose";
 import validator from "validator";
-
+/**Added doctor search functionality */
 const appointmentSchema = new mongoose.Schema({
   firstName: {
     type: String,
