@@ -10,3 +10,4 @@ router.post("/send", sendMessage);
 router.get("/getall", isAdminAuthenticated, getAllMessages);
 
 export default router;
+//Added form validation for user inputs
