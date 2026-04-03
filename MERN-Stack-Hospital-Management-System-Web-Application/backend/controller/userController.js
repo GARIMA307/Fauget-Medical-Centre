@@ -357,20 +357,26 @@ export const logoutAdmin = catchAsyncErrors(async (req, res, next) => {
   }).json({ success: true, message: "Admin Logged Out" });
 });
 
-export const logoutPatient = catchAsyncErrors(async (req, res, next) => {
-  res.status(200).cookie("patientToken", "", {
-    httpOnly: true,
-    expires: new Date(0),
-    sameSite: "Lax",
-  }).json({ success: true, message: "Patient Logged Out" });
-});
+export const logoutPatient = async (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Logged out successfully",
+  });
+};
 
 
 export const getAllHospitals = async (req, res) => {
   try {
-    const hospitals = await User.distinct("hospital", {
-      role: "Doctor",
-    });
+    const { state } = req.query;
+
+    let filter = { role: "Doctor" };
+
+    // ✅ Apply state filter if provided
+    if (state) {
+      filter.state = { $regex: new RegExp(state, "i") };
+    }
+
+    const hospitals = await User.distinct("hospital", filter);
 
     res.status(200).json({
       success: true,
@@ -384,3 +390,5 @@ export const getAllHospitals = async (req, res) => {
     });
   }
 };
+
+  

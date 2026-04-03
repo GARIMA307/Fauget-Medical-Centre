@@ -20,13 +20,13 @@ const handleClick = (dept) => {
 
   // ✅ FETCH HOSPITALS FROM BACKEND
   useEffect(() => {
-    fetch(`http://localhost:5000/api/hospitals/${activeState}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setHospitals(data);
-      })
-      .catch((err) => console.log(err));
-  }, [activeState]);
+  fetch(`http://localhost:5000/api/v1/user/hospitals`)
+    .then((res) => res.json())
+    .then((data) => {
+      setHospitals(data.hospitals);
+    })
+    .catch((err) => console.log(err));
+}, []);
 
   // ✅ LOGIN CHECK
   useEffect(() => {
@@ -54,22 +54,17 @@ const handleClick = (dept) => {
 
 const handleLogout = async () => {
   try {
-    await axios.get(
-      "http://localhost:5000/api/v1/user/patient/logout",
-      { withCredentials: true }
-    );
+    await axios.get("http://localhost:5000/api/v1/user/patient/logout");
 
-    // remove token (if any)
     localStorage.removeItem("token");
-localStorage.removeItem("user");   // ✅ THIS LINE IS MISSING
-setUser(null);  
+    localStorage.removeItem("user");
+
+    setUser(null);
 
     toast.success("Logged out successfully");
 
-    // 🔥 FORCE FULL RESET
-    setTimeout(() => {
-   navigate("/login");   // better than window.location
-    }, 1500);
+    navigate("/login");
+
   } catch (error) {
     console.log(error);
   }
@@ -125,18 +120,18 @@ setUser(null);
 
       <div className="mega-right">
         {hospitals.length > 0 ? (
-          hospitals.map((hospital, index) => (
-            <Link
-              key={index}
-              to={`/hospital/${encodeURIComponent(hospital.name)}`}
-              className="hospital-link"
-            >
-              {hospital.name}
-            </Link>
-          ))
-        ) : (
-          <p>Loading hospitals...</p>
-        )}
+  hospitals.map((hospital, index) => (
+    <Link
+      key={index}
+      to={`/hospital/${encodeURIComponent(hospital)}`}
+      className="hospital-link"
+    >
+      {hospital}
+    </Link>
+  ))
+) : (
+  <p>Loading hospitals...</p>
+)}
       </div>
     </div>
   )}

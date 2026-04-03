@@ -132,12 +132,7 @@ toast.success(
     </span>
   </p>
 </>
-//Displayed doctor list dynamically
-//Improved doctor UI cards
-//Improved responsive design
-//Enhanced button styles
-//Added loading indicators
-//Improved overall application performance
+
         </div>
       </div>
     </div>

@@ -32,7 +32,7 @@ router.post("/doctor/addnew", isAdminAuthenticated, addNewDoctor);
 router.get("/doctors", getAllDoctors);
 router.get("/patient/me", isPatientAuthenticated, getUserDetails);
 router.get("/admin/me", isAdminAuthenticated, getUserDetails);
-router.get("/patient/logout", isPatientAuthenticated, logoutPatient);
+router.get("/patient/logout", logoutPatient);
 router.get("/admin/logout", isAdminAuthenticated, logoutAdmin);
 router.post("/send-otp", sendOtp);
 router.post("/verify-otp", verifyOtp);
