@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-
+import hospitalRoutes from "./routes/hospitalRoutes.js";
 import userRouter from "./router/userRouter.js";
 import appointmentRouter from "./router/appointmentRouter.js";
 import messageRouter from "./router/messageRouter.js";
@@ -24,7 +24,7 @@ app.options("*", cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
+app.use("/api/v1/hospitals", hospitalRoutes);
 // ROUTES
 app.use("/api/v1/feedback", feedbackRoutes);
 app.use("/api/v1/user", userRouter);

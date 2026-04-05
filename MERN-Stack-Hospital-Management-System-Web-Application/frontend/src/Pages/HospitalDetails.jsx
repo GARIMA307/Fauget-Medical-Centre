@@ -1,8 +1,7 @@
-/**kjkjkjkj */
-
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { FaRegCalendarAlt } from "react-icons/fa";
 
 const doctorImages = [
   "/doctors/doctor1.jpg",
@@ -14,18 +13,21 @@ const doctorImages = [
 const HospitalDetails = () => {
   const navigate = useNavigate();
   const { name } = useParams();
-const decodedName = decodeURIComponent(name);
+
+  // ✅ FIX: correct decoding
+  const decodedName = decodeURIComponent(name);
+
   const [doctorLoading, setDoctorLoading] = useState(true);
   const [doctors, setDoctors] = useState([]);
 
-  // ✅ FETCH DOCTORS FROM BACKEND
+  // ✅ FETCH DOCTORS
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        console.log("Fetching doctors for:", name);
+        console.log("Fetching doctors for:", decodedName);
 
         const { data } = await axios.get(
-       `http://localhost:5000/api/v1/user/doctors/hospital/${decodedName}`
+          `http://localhost:5000/api/v1/user/doctors/hospital/${encodeURIComponent(decodedName)}`
         );
 
         setDoctors(data.doctors || []);
@@ -37,13 +39,13 @@ const decodedName = decodeURIComponent(name);
     };
 
     fetchDoctors();
-  }, [name]);
+  }, [decodedName]);
 
   const hospitalImages = {
     "Fauget Heart Institute,Defence Colony,New Delhi": "/hospitals/delhi1.jpg",
     "Fauget Medical Centre,Chirag Enclave,New Delhi": "/hospitals/delhi2.jpg",
     "Fauget Medical Centre, Mohali": "/hospitals/mohali.jpg",
-    "Fauget La Femme,Shalimar Bagh,New Delhi": "/hospitals/shalimar.jpg",
+"Fauget La Femme,Shalimar Bagh,New Delhi": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3",
     "Fauget Hospital Mall Road, Ludhiana": "/hospitals/ludhiana.jpg",
     "Fauget Medical Centre, Bathinda": "/hospitals/bathinda.jpg",
     "Fauget Medical Centre, Gurgaon": "/hospitals/gurgaon.jpg",
@@ -54,20 +56,22 @@ const decodedName = decodeURIComponent(name);
   return (
     <div className="hospital-page">
       {/* HERO */}
-      <div className="hero-section">
-        <img
-src={hospitalImages[decodedName] || "/hospitals/default.jpg"}
-          alt="hospital"
-          className="hospital-img"
-        />
-      </div>
+     <div className="hero-section">
+
+    <img
+      src={hospitalImages[decodedName] || "/hospitals/default.jpg"}
+      alt="hospital"
+      className="hospital-img"
+    />
+  </div>
+
 
       {/* TITLE */}
       <div className="hospital-title">
-        <h1>{decodedname}</h1>
+        <h1>{decodedName}</h1>
       </div>
 
-      {/* STATIC STATS */}
+      {/* STATS */}
       <div className="hospital-stats">
         <div className="stat-card beds">
           <h2>259</h2>
@@ -120,10 +124,13 @@ src={hospitalImages[decodedName] || "/hospitals/default.jpg"}
                 </h3>
 
                 <p className="department">{doc.doctorDepartment}</p>
-                <p className="hospital">{decodedname}</p>
 
+                {/* ✅ FIXED HERE */}
+                <p className="hospital">{decodedName}</p>
+
+ <FaRegCalendarAlt className="icon" />
                 <div className="doctor-info">
-                  <span>{doc.experience || "10"} yrs</span>
+                  <span>{doc.experience || "10"}  </span>
                   <span>₹ {doc.fees || "1000"}</span>
                 </div>
 

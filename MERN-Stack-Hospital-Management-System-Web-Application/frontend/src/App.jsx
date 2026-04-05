@@ -63,7 +63,7 @@ localStorage.setItem("user", JSON.stringify(res.data.user));
 
       <Routes>
 <Route path="/hospitals" element={<Hospitallist />} />
-        <Route path="/hospitals" element={<HospitalDetails />} />
+        <Route path="/hospital/:name" element={<HospitalDetails />} />
         <Route path="/" element={<Home />} />
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/departments" element={<Departments />} />

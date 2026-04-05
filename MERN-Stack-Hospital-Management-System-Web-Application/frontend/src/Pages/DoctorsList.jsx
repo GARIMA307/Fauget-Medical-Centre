@@ -119,7 +119,7 @@ const DoctorsList = ({ doctors: propDoctors }) => {
                   <FaRegCalendarAlt className="icon" />
                   <div>
                     <p className="value">
-                      {doc.experience || "10"} 
+                      {doc.experience || "10 years"} 
                     </p>
                     <p className="label">Experience</p>
                   </div>
@@ -127,7 +127,7 @@ const DoctorsList = ({ doctors: propDoctors }) => {
 
                 {/* FEES */}
                 <div className="info-box">
-                  <MdCurrencyRupee className="icon" />
+                  
                   <div>
                     <p className="value">
                       ₹ {doc.fees || "1000"}

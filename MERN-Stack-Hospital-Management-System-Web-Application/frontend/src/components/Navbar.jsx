@@ -19,14 +19,14 @@ const handleClick = (dept) => {
   const dropdownRef = useRef();
 
   // ✅ FETCH HOSPITALS FROM BACKEND
-  useEffect(() => {
-  fetch(`http://localhost:5000/api/v1/user/hospitals`)
+useEffect(() => {
+ fetch(`http://localhost:5000/api/v1/hospitals/${activeState}`)
     .then((res) => res.json())
     .then((data) => {
-      setHospitals(data.hospitals);
+      setHospitals(data); // ✅ direct array
     })
     .catch((err) => console.log(err));
-}, []);
+}, [activeState]);
 
   // ✅ LOGIN CHECK
   useEffect(() => {
@@ -120,15 +120,15 @@ const handleLogout = async () => {
 
       <div className="mega-right">
         {hospitals.length > 0 ? (
-  hospitals.map((hospital, index) => (
-    <Link
-      key={index}
-      to={`/hospital/${encodeURIComponent(hospital)}`}
-      className="hospital-link"
-    >
-      {hospital}
-    </Link>
-  ))
+hospitals.map((hospital, index) => (
+  <Link
+    key={index}
+    to={`/hospital/${encodeURIComponent(hospital.name)}`}
+    className="hospital-link"
+  >
+    {hospital.name}
+  </Link>
+))
 ) : (
   <p>Loading hospitals...</p>
 )}
